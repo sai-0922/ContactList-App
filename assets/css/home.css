@@ -1,0 +1,55 @@
+body{
+    color: white;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+    color: rgb(68, 67, 67);
+}
+
+#container{
+    width: 300px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 20px;
+    justify-content: space-between;
+}
+
+.contact{
+    margin: 1.5px 0px;
+    padding: 5px 5px;
+    background-color: rgba(53, 131, 220, 0.879);
+    display: flex;
+    justify-content: space-between;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover{
+    background-color: rgba(255, 0, 0, 0.551);
+}
+
+.contact:hover{
+    background-color: grey;
+}
+
+form{
+    color: black;
+}
+
+button:hover{
+    color: white;
+    background-color: grey;
+}
+
+.name, .number{
+    font-size: 18px;
+}

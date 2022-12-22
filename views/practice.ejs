@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+</head>
+<body>
+    <h1>Play Here</h1>
+    <!-- Writing a for loop in ejs-->
+    <ul>
+        <% for (let i=0; i<10 ;i++){ %>
+            <li>
+                <%= i+1 %>
+            </li>
+        <% } %>
+    </ul>
+
+    <!--Writing a conditional in ejs.-->
+
+    <% if(true){ %>
+        <h2>The conditional is working!</h2>
+    <% }else{%>
+        <h2>The if else statement.</h2>
+    <%} %>
+</body>
+</html>

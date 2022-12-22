@@ -1,0 +1,1 @@
+console.log("The script file is linked to page.")

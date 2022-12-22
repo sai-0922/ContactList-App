@@ -1,0 +1,39 @@
+<!--According to the convention the file shouldn't have .html extension. It should be saved with .ejs so that it can be accessed.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/home.css">
+    <title>
+        <%= title %>
+    </title>
+</head>
+<body>
+    <h1>Here are the contacts of your fellas!</h1>
+    <div id="container">
+        <% for(let i of locals.contact_list){ %>
+            <div class="contact">
+                <span class="name"><%= i.name %></span>
+                <span class="number"><%= i.number %> &nbsp; <a href="/delete-contact/<%= i.name %>">X</a></span>
+            </div>
+        <%} %>
+    </div>
+    <!--<ul>
+        <% for(let i of locals.contact_list){ %>
+            <li>
+                <p><%= i.name %></p>
+                <p><%= i.number %></p>
+            </li>
+        <%} %>
+    </ul>-->
+
+    <form action="/new-contact" method="POST">
+            Name: <input type="text" name="name" placeholder="Enter name" required>&emsp;
+            Ph no: <input type="number" name="number" placeholder="Enter ph no." required>
+            <button type="submit"> Create </button>
+    </form>
+<script type="text/javascript" src="js/home.js"></script>
+</body>
+</html>

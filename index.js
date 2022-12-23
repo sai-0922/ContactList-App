@@ -61,7 +61,18 @@ app.use(function(req, res, next){
 
 //The other possible practice is using the view engine. We just need to specify the filename u want to render.
 app.get('/', function(req, res){
-    return res.render('home', { title: "My Contacts List" , contact_list: contactList});//It is prefered to use return statement if no further execution required.
+    //return res.render('home', { title: "My Contacts List" , contact_list: contactList});//It is prefered to use return statement if no further execution required.
+    //The above line is for temporary storage. Lets now use databases to store and access data.
+
+    //The 1st arg is query. Here nothing mentioned so all contacts are selected. If we mention {name : 'Mark'} then all contacts with name 'Mark' are selected.
+    //The 2nd arg of function inside is the collection satisfying that query.
+    Contact.find({}, function(err, contacts){
+        if(err){
+            console.log('Error in fetching contacts from database.');
+            return;
+        }
+        return res.render('home', { title: "My Contacts List" , contact_list: contacts});
+    })
 })
 
 app.get('/practice', function(req, res){
@@ -71,14 +82,27 @@ app.get('/practice', function(req, res){
 app.post('/new-contact', function(req, res){
     console.log(req.body);
     //Next step is to push the contact into contactList
-    contactList.push(
+    /*contactList.push(
         {
             name: req.body.name,
             number: req.body.number
         }
-    )
+    )*/
     //But note that this is not permanent storage once the server is off the data erases.
-    return res.redirect('back');//To redirect the page after form is submitted
+
+
+    //Creating contact in db
+    Contact.create({
+        name : req.body.name,
+        number : req.body.number
+    }, function(err, newContact){//The 2nd argument is the contact just created.newContact is just a var name.
+        if(err){console.log('Error in creating contact!');return;}
+
+        console.log('*********', newContact);
+
+        return res.redirect('back');//To redirect the page after form is submitted
+    })
+
 })
 
 app.get('/delete-contact/:name', function(req, res){

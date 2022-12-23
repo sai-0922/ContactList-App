@@ -6,7 +6,7 @@ const ContactSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    phone : {
+    number : {
         type : String,
         required : true
     }
@@ -18,4 +18,4 @@ const contact = mongoose.model('ContactListDB', ContactSchema);
 //contact schema of that collection.
 
 //Finally we should export this collection model and use i.e., require this collection model in index.js
-module.exports = Contact;
+module.exports = contact;

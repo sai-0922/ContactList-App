@@ -16,7 +16,7 @@
         <% for(let i of locals.contact_list){ %>
             <div class="contact">
                 <span class="name"><%= i.name %></span>
-                <span class="number"><%= i.number %> &nbsp; <a href="/delete-contact/<%= i.name %>">X</a></span>
+                <span class="number"><%= i.number %> &nbsp; <a href="/delete-contact/<%= i.id %>">X</a></span>
             </div>
         <%} %>
     </div>

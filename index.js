@@ -105,15 +105,20 @@ app.post('/new-contact', function(req, res){
 
 })
 
-app.get('/delete-contact/:name', function(req, res){
+app.get('/delete-contact/:id', function(req, res){
     //We used params to do this. Instead we can also use query params.
-    let name = req.params.name;
+    let id = req.params.id;
 
-    let ContactIndex = contactList.findIndex(contact => contact.name == name);
+    Contact.findByIdAndDelete(id, function(err){
+        if(err){
+            console.log('Error in deleting contact');
+        }
+    })
+    //let ContactIndex = contactList.findIndex(contact => contact.name == name);
 
-    if(ContactIndex != -1){
+    /*if(ContactIndex != -1){
         contactList.splice(ContactIndex, 1);
-    }
+    }*/
 
     return res.redirect('back');
 })
